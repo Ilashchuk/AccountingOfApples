@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    internal class Area
+    public class Area
     {
         public Guid Id { get; set; }
         public string? Name { get; set; }

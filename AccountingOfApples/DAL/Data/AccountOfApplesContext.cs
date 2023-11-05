@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Data
 {
-    internal class AccountOfApplesContext : DbContext
+    public class AccountOfApplesContext : DbContext
     {
         public DbSet<Area> Areas { get; set; } = null!;
         public DbSet<AreaAppleVariety> AreaAppleVarieties { get; set; } = null!;

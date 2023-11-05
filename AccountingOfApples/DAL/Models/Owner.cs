@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    internal class Owner
+    public class Owner
     {
         public Guid Id { get; set; }
         [Required]

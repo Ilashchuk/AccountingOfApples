@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Models
 {
-    internal class OrderAppleVariety
+    public class OrderAppleVariety
     {
         public Guid Id { get; set; }
         public Guid OrderId { get; set; }

@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace DAL.Models
 {
-    internal class Client
+    public class Client
     {
         public Guid Id { get; set; }
         public string? Name { get; set; }
