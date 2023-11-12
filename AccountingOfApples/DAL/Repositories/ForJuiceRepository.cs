@@ -18,12 +18,7 @@ namespace DAL.Repositories
         }
         public IEnumerable<ForJuice> GetByOwner(Owner owner)
         {
-            return Context.ForJuices.Include(x => x.Owner).Where(x => x.Owner == owner).ToList();
-        }
-
-        public AccountOfApplesContext Context
-        {
-            get { return dbContext as AccountOfApplesContext; }
+            return dbContext.ForJuices.Include(x => x.Owner).Where(x => x.Owner == owner).ToList();
         }
     }
 }

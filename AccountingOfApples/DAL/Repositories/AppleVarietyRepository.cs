@@ -14,10 +14,5 @@ namespace DAL.Repositories
             : base(context)
         {
         }
-
-        public AccountOfApplesContext Context
-        {
-            get { return dbContext as AccountOfApplesContext; }
-        }
     }
 }
