@@ -1,3 +1,4 @@
+using AccountingOfApples;
 using DAL.Data;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);

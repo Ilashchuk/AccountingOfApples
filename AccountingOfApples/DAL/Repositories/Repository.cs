@@ -17,9 +17,9 @@ namespace DAL.Repositories
             this.dbContext = dbContext;
         }
 
-        public TEntity GetById(int id)
+        public TEntity? GetById(int? id)
         {
-            return dbContext.Set<TEntity>().Find(id) ?? throw new Exception("No object!");
+            return dbContext.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> GetAll()
