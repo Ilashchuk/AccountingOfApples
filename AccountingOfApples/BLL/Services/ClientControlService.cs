@@ -1,26 +1,27 @@
 ﻿using AutoMapper;
 using DAL.Models;
 using DAL.Repositories.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BLL.Services
+namespace BLL.Services;
+
+public class ClientControlService : IClientControlService
 {
-    public class ClientControlService : IClientControlService
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+
+    public ClientControlService(IUnitOfWork unitOfWork, IMapper mapper)
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        public ClientControlService(IUnitOfWork unitOfWork, IMapper mapper)
-        {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-        }
-        public IEnumerable<ClientDTO> GetClients()
-        {
-            return _mapper.Map<IEnumerable<ClientDTO>>(_unitOfWork.Clients.GetAll());
-        }
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
+    }
+
+    public async Task<IEnumerable<ClientDTO>> GetClientsAsync()
+    {
+        return _mapper.Map<IEnumerable<ClientDTO>>(await _unitOfWork.Clients.GetAllAsync());
+    }
+
+    public async Task<ClientDTO> GetClientByIdAsync(Guid id)
+    {
+        return _mapper.Map<ClientDTO>(await _unitOfWork.Clients.GetByIdAsync(id));
     }
 }

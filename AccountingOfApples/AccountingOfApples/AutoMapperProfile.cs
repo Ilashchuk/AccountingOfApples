@@ -2,14 +2,13 @@
 using AutoMapper;
 using DAL.Models;
 
-namespace AccountingOfApples
+namespace AccountingOfApples;
+
+public class AutoMapperProfile : Profile
 {
-    public class AutoMapperProfile : Profile
+    public AutoMapperProfile() 
     {
-        public AutoMapperProfile() 
-        {
-            CreateMap<Client, ClientDTO>().ReverseMap();
-            CreateMap<ClientDTO, ClientViewModel>().ReverseMap();
-        }
+        CreateMap<Client, ClientDTO>().ReverseMap();
+        CreateMap<ClientDTO, ClientViewModel>().ReverseMap();
     }
 }

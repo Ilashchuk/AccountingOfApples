@@ -1,40 +1,50 @@
 ﻿using DAL.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DAL.Repositories
+namespace DAL.Repositories;
+
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    protected readonly AccountOfApplesContext _dbContext;
+    public Repository(AccountOfApplesContext dbContext)
     {
-        protected readonly AccountOfApplesContext dbContext;
-        public Repository(AccountOfApplesContext dbContext)
-        {
-            this.dbContext = dbContext;
-        }
+        this._dbContext = dbContext;
+    }
 
-        public TEntity? GetById(int? id)
-        {
-            return dbContext.Set<TEntity>().Find(id);
-        }
+    public async Task<TEntity?> GetByIdAsync(Guid id)
+    {
+        return await _dbContext.Set<TEntity>().FindAsync(id);
+    }
 
-        public IEnumerable<TEntity> GetAll()
-        {
-            return dbContext.Set<TEntity>().ToList();
-        }
+    public async Task<IEnumerable<TEntity>> GetAllAsync()
+    {
+        return await _dbContext.Set<TEntity>().ToListAsync();
+    }
 
-        public void Add(TEntity entity)
-        {
-            dbContext.Set<TEntity>().Add(entity);
-        }
+    public async Task AddAsync(TEntity entity)
+    {
+        await _dbContext.Set<TEntity>().AddAsync(entity);
+    }
 
-        public void Remove(TEntity entity)
+    public void Update(TEntity entity)
+    {
+        _dbContext.Set<TEntity>().Update(entity);
+    }
+
+    public void Remove(TEntity entity)
+    {
+        _dbContext.Set<TEntity>().Remove(entity);
+    }
+    public bool NotEmpty()
+    {
+        return _dbContext.Set<TEntity>().Any();
+    }
+    public async Task<bool> ExistsAsync(Guid id)
+    {
+        if (await _dbContext.Set<TEntity>().FindAsync(id) != null)
         {
-            dbContext.Set<TEntity>().Remove(entity);
+            return true;
         }
+        return false;
     }
 }

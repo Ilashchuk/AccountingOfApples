@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿namespace DAL.Models;
 
-namespace DAL.Models
+public class Client
 {
-    public class Client
-    {
-        public Guid Id { get; set; }
-        public string? Name { get; set; }
-        public string? Phone { get; set; }
-        public string? Description { get; set; } = null;
+    public Guid Id { get; set; }
 
-        public ICollection<Order> Orders { get; set; } = new List<Order>();
-    }
+    public string? Name { get; set; }
+
+    public string? Phone { get; set; }
+
+    public string? Description { get; set; } = null;
+
+    public ICollection<Order> Orders { get; set; } = new List<Order>();
 }

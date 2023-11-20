@@ -1,14 +1,10 @@
 ﻿using DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BLL.Services
+namespace BLL.Services;
+
+public interface IClientControlService
 {
-    public interface IClientControlService
-    {
-        public IEnumerable<ClientDTO> GetClients();
-    }
+    Task<IEnumerable<ClientDTO>> GetClientsAsync();
+
+    Task<ClientDTO> GetClientByIdAsync(Guid id);
 }
