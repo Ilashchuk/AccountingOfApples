@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DAL.Models;
-
+namespace BLL.DTO;
 public class OrderDTO
 {
     public Guid Id { get; set; }

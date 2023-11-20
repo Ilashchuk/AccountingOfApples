@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Models;
-
+namespace BLL.DTO;
 public class OwnerDTO
 {
     public Guid Id { get; set; }

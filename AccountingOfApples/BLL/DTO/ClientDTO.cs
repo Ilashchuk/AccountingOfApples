@@ -1,5 +1,4 @@
-﻿namespace DAL.Models;
-
+﻿namespace BLL.DTO;
 public class ClientDTO
 {
     public Guid Id { get; set; }

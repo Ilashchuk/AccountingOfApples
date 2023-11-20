@@ -1,5 +1,6 @@
 ﻿using AccountingOfApples.ViewModels;
 using AutoMapper;
+using BLL.DTO;
 using DAL.Models;
 
 namespace AccountingOfApples;

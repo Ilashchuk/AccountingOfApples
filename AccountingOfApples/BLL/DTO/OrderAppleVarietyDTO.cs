@@ -1,5 +1,4 @@
-﻿namespace DAL.Models;
-
+﻿namespace BLL.DTO;
 public class OrderAppleVarietyDTO
 {
     public Guid Id { get; set; }

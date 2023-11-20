@@ -1,4 +1,4 @@
-﻿namespace DAL.Models;
+﻿namespace BLL.DTO;
 
 public class AreaDTO
 {

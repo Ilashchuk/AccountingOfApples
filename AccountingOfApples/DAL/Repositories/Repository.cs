@@ -28,6 +28,8 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 
     public void Update(TEntity entity)
     {
+        _dbContext.Set<TEntity>().Local.Clear();
+        
         _dbContext.Set<TEntity>().Update(entity);
     }
 

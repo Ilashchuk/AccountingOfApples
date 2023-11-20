@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BLL.DTO;
 using DAL.Models;
 using DAL.Repositories.UnitOfWork;
 
@@ -23,5 +24,40 @@ public class ClientControlService : IClientControlService
     public async Task<ClientDTO> GetClientByIdAsync(Guid id)
     {
         return _mapper.Map<ClientDTO>(await _unitOfWork.Clients.GetByIdAsync(id));
+    }
+
+    public async Task<ClientDTO?> CreateClientAsync(ClientDTO client)
+    {
+        await _unitOfWork.Clients.AddAsync(_mapper.Map<Client>(client));
+        if (_unitOfWork.Complete() == 0)
+        {
+            return null;
+        }
+        return client;
+    }
+
+    public async Task<ClientDTO?> UpdateClientAsync(ClientDTO clientDTO)
+    {
+        Client? client = await _unitOfWork.Clients.GetByIdAsync(clientDTO.Id);
+        if (client != null)
+        {
+            client = _mapper.Map<Client>(clientDTO);
+            _unitOfWork.Clients.Update(client);
+            _unitOfWork.Complete();
+            return clientDTO;
+        }
+        return null;
+    }
+
+    public async Task<bool> Remove(Guid id)
+    {
+        Client? client = await _unitOfWork.Clients.GetByIdAsync(id);
+        if (client != null)
+        {
+            _unitOfWork.Clients.Remove(client);
+            _unitOfWork.Complete();
+            return true;
+        }
+        return false;
     }
 }
