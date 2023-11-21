@@ -3,7 +3,6 @@ using AutoMapper;
 using BLL.Services;
 using BLL.DTO;
 using Microsoft.AspNetCore.Mvc;
-using DAL.Models;
 
 namespace AccountingOfApples.Controllers;
 
@@ -23,13 +22,13 @@ public class ClientController : ControllerBase
     [HttpGet("List")]
     public async Task<IActionResult> GetGlients()
     {
-        return Ok(_mapper.Map<List<ClientViewModel>>(await _clientControlService.GetClientsAsync()));
+        return Ok(_mapper.Map<List<ClientViewModel>>(await _clientControlService.GetAllAsync()));
     }
 
     [HttpGet("Get/{id}")]
     public async Task<IActionResult> GetClientById(Guid id)
     {
-        return Ok(_mapper.Map<ClientViewModel>(await _clientControlService.GetClientByIdAsync(id)));
+        return Ok(_mapper.Map<ClientViewModel>(await _clientControlService.GetByIdAsync(id)));
     }
 
     [HttpPost("Add")]
@@ -37,7 +36,7 @@ public class ClientController : ControllerBase
     {
         if (ModelState.IsValid)
         {
-            ClientDTO? newClientDTO = await _clientControlService.CreateClientAsync(_mapper.Map<ClientDTO>(client));
+            ClientDTO? newClientDTO = await _clientControlService.CreateAsync(_mapper.Map<ClientDTO>(client));
             if (newClientDTO != null)
             {
                 return StatusCode(StatusCodes.Status201Created, client);
@@ -52,7 +51,7 @@ public class ClientController : ControllerBase
     {
         if (ModelState.IsValid)
         {
-            ClientDTO? updateClientDTO = await _clientControlService.UpdateClientAsync(_mapper.Map<ClientDTO>(client));
+            ClientDTO? updateClientDTO = await _clientControlService.UpdateAsync(_mapper.Map<ClientDTO>(client));
             if (updateClientDTO != null)
             {
                 return StatusCode(StatusCodes.Status200OK, client);

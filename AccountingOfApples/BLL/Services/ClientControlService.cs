@@ -16,17 +16,17 @@ public class ClientControlService : IClientControlService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ClientDTO>> GetClientsAsync()
+    public async Task<IEnumerable<ClientDTO>> GetAllAsync()
     {
         return _mapper.Map<IEnumerable<ClientDTO>>(await _unitOfWork.Clients.GetAllAsync());
     }
 
-    public async Task<ClientDTO> GetClientByIdAsync(Guid id)
+    public async Task<ClientDTO> GetByIdAsync(Guid id)
     {
         return _mapper.Map<ClientDTO>(await _unitOfWork.Clients.GetByIdAsync(id));
     }
 
-    public async Task<ClientDTO?> CreateClientAsync(ClientDTO client)
+    public async Task<ClientDTO?> CreateAsync(ClientDTO client)
     {
         await _unitOfWork.Clients.AddAsync(_mapper.Map<Client>(client));
         if (_unitOfWork.Complete() == 0)
@@ -36,7 +36,7 @@ public class ClientControlService : IClientControlService
         return client;
     }
 
-    public async Task<ClientDTO?> UpdateClientAsync(ClientDTO clientDTO)
+    public async Task<ClientDTO?> UpdateAsync(ClientDTO clientDTO)
     {
         Client? client = await _unitOfWork.Clients.GetByIdAsync(clientDTO.Id);
         if (client != null)

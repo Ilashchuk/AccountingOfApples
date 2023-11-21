@@ -31,6 +31,7 @@ public static class ServicesRegistration
 
         //Servises
         builder.Services.AddScoped<IClientControlService, ClientControlService>();
+        builder.Services.AddScoped<IOwnerControlService, OwnerControlService>();
 
     }
 }

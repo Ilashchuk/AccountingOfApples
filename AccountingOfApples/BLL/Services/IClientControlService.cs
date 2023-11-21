@@ -2,15 +2,6 @@
 
 namespace BLL.Services;
 
-public interface IClientControlService
+public interface IClientControlService : IControlService<ClientDTO>
 {
-    Task<IEnumerable<ClientDTO>> GetClientsAsync();
-
-    Task<ClientDTO> GetClientByIdAsync(Guid id);
-
-    Task<ClientDTO?> CreateClientAsync(ClientDTO client);
-
-    Task<ClientDTO?> UpdateClientAsync(ClientDTO client);
-
-    Task<bool> Remove(Guid id);
 }

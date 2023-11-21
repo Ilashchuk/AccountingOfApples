@@ -11,5 +11,8 @@ public class AutoMapperProfile : Profile
     {
         CreateMap<Client, ClientDTO>().ReverseMap();
         CreateMap<ClientDTO, ClientViewModel>().ReverseMap();
+
+        CreateMap<Owner, OwnerDTO>().ReverseMap();
+        CreateMap<OwnerDTO, OwnerViewModel>().ReverseMap();
     }
 }
