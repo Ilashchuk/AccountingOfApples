@@ -5,7 +5,7 @@ using DAL.Repositories.UnitOfWork;
 
 namespace BLL.Services;
 
-public class OwnerControlService : IOwnerControlService
+public class OwnerControlService : IOwnerControlServoce
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

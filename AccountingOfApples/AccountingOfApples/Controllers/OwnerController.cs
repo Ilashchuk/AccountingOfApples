@@ -11,10 +11,10 @@ namespace AccountingOfApples.Controllers;
 public class OwnerController : ControllerBase
 {
 
-    private readonly IOwnerControlService _ownerControlService;
+    private readonly IOwnerControlServoce _ownerControlService;
     private readonly IMapper _mapper;
 
-    public OwnerController(IOwnerControlService ownerControlService, IMapper mapper)
+    public OwnerController(IOwnerControlServoce ownerControlService, IMapper mapper)
     {
         _ownerControlService = ownerControlService;
         _mapper = mapper;
