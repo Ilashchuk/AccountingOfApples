@@ -17,6 +17,14 @@ public class OrderAppleVarietyDTO
 
     public int CountOfBoxes { get; set; }
 
+    public double? AvarageWeight { get; set; }
+
+    public double? TotalPrice { get; set; }
+
+    public double? SumForOwner { get; set; }
+
+    public double? MyIncom { get; set; }
+
     public OrderDTO? Order { get; set; }
 
     public AppleVarietyDTO? AppleVariety { get; set; }

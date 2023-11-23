@@ -18,7 +18,18 @@ public class OrderControlService : IOrderControlService
 
     public async Task<IEnumerable<OrderDTO>> GetAllAsync()
     {
-        return _mapper.Map<IEnumerable<OrderDTO>>(await _unitOfWork.Orders.GetAllAsync());
+        IEnumerable<OrderDTO> orders = _mapper.Map<IEnumerable<OrderDTO>>(await _unitOfWork.Orders.GetAllAsync());
+        foreach (var order in orders)
+        {
+            foreach (var item in order.OrderAppleVarieties)
+            {
+                item.AvarageWeight = item.Weight / item.CountOfBoxes;
+                item.TotalPrice = item.Price * item.Weight - item.Packaging?.Price * item.Weight;
+                item.SumForOwner = item.TotalPrice / 100 * item.Area?.Owner?.Percent;
+                item.MyIncom = item.TotalPrice - item.SumForOwner;
+            }
+        }
+        return orders;
     }
 
     public async Task<IEnumerable<OrderDTO>> GetAllByClientIdAsync(Guid clientId)

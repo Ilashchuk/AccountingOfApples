@@ -14,5 +14,5 @@ public class AreaDTO
 
     public OwnerDTO? Owner { get; set; }
 
-    public ICollection<AppleVarietyDTO> AreaAppleVarieties { get; set; } = new List<AppleVarietyDTO>();
+    public ICollection<AppleVarietyDTO> AppleVarieties { get; set; } = new List<AppleVarietyDTO>();
 }

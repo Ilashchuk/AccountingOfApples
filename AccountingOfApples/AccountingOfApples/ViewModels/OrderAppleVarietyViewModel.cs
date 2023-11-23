@@ -20,6 +20,14 @@ public class OrderAppleVarietyViewModel
 
     public Guid? PackagingId { get; set; }
 
+    public double? AvarageWeight { get; set; }
+
+    public double? TotalPrice { get; set; }
+
+    public double? SumForOwner { get; set; }
+
+    public double? MyIncom { get; set; }
+
     public OrderViewModel? Order { get; set; }
 
     public AppleVarietyViewModel? AppleVariety { get; set; }
