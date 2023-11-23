@@ -34,5 +34,8 @@ public class AutoMapperProfile : Profile
 
         CreateMap<OrderAppleVariety, OrderAppleVarietyDTO>().ReverseMap();
         CreateMap<OrderAppleVarietyDTO, OrderAppleVarietyViewModel>().ReverseMap();
+
+        CreateMap<Packaging, PackagingDTO>().ReverseMap();
+        CreateMap<PackagingDTO, PackagingViewModel>().ReverseMap();
     }
 }

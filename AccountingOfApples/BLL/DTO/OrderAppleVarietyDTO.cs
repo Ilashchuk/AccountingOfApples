@@ -9,6 +9,8 @@ public class OrderAppleVarietyDTO
 
     public Guid AreaId { get; set; }
 
+    public Guid PackagingId { get; set; }
+
     public double Price { get; set; }
 
     public double Weight { get; set; }
@@ -20,5 +22,7 @@ public class OrderAppleVarietyDTO
     public AppleVarietyDTO? AppleVariety { get; set; }
 
     public AreaDTO? Area { get; set; }
+
+    public PackagingDTO? Packaging { get; set; }
 
 }

@@ -161,6 +161,9 @@ namespace DAL.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("PackagingId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -174,6 +177,8 @@ namespace DAL.Migrations
                     b.HasIndex("AreaId");
 
                     b.HasIndex("OrderId");
+
+                    b.HasIndex("PackagingId");
 
                     b.ToTable("OrderAppleVarieties");
                 });
@@ -194,6 +199,20 @@ namespace DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Owners");
+                });
+
+            modelBuilder.Entity("DAL.Models.Packaging", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double?>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Packagings");
                 });
 
             modelBuilder.Entity("DAL.Models.Area", b =>
@@ -268,11 +287,19 @@ namespace DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DAL.Models.Packaging", "Packaging")
+                        .WithMany("OrderAppleVarieties")
+                        .HasForeignKey("PackagingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("AppleVariety");
 
                     b.Navigation("Area");
 
                     b.Navigation("Order");
+
+                    b.Navigation("Packaging");
                 });
 
             modelBuilder.Entity("DAL.Models.AppleVariety", b =>
@@ -304,6 +331,11 @@ namespace DAL.Migrations
                     b.Navigation("Areas");
 
                     b.Navigation("ForJuices");
+                });
+
+            modelBuilder.Entity("DAL.Models.Packaging", b =>
+                {
+                    b.Navigation("OrderAppleVarieties");
                 });
 #pragma warning restore 612, 618
         }

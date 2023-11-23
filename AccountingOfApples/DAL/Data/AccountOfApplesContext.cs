@@ -21,6 +21,8 @@ public class AccountOfApplesContext : DbContext
 
     public DbSet<ForJuice> ForJuices { get; set; } = null!;
 
+    public DbSet<Packaging> Packagings { get; set; } = null!; 
+
     public AccountOfApplesContext(DbContextOptions<AccountOfApplesContext> options) : base(options)
     {
         Database.EnsureCreated();

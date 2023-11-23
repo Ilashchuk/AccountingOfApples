@@ -16,6 +16,7 @@ public class OrderAppleVarietyRepository : Repository<OrderAppleVariety>, IOrder
         return await _dbContext.OrderAppleVarieties
             .Include(a => a.Order).Include(a => a.Area).ThenInclude(a => a.Owner)
             .Include(a => a.AppleVariety)
+            .Include(a => a.Packaging)
             .ToListAsync();
     }
 

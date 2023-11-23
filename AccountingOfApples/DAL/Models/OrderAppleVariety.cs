@@ -10,6 +10,8 @@ public class OrderAppleVariety
 
     public Guid AreaId { get; set; }
 
+    public Guid PackagingId { get; set; }
+
     public double Price { get; set; }
 
     public double Weight { get; set; }
@@ -21,5 +23,7 @@ public class OrderAppleVariety
     public AppleVariety? AppleVariety { get; set; }
 
     public Area? Area { get; set; }
+
+    public Packaging? Packaging { get; set; }
 
 }

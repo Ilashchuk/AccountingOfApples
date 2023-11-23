@@ -18,9 +18,13 @@ public class OrderAppleVarietyViewModel
 
     public Guid? AreaId { get; set; }
 
+    public Guid? PackagingId { get; set; }
+
     public OrderViewModel? Order { get; set; }
 
     public AppleVarietyViewModel? AppleVariety { get; set; }
 
     public AreaViewModel? Area { get; set; }
+
+    public PackagingViewModel? Packaging { get; set; }
 }

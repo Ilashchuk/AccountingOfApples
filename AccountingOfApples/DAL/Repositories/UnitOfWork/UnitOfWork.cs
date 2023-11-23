@@ -17,6 +17,7 @@ public class UnitOfWork : IUnitOfWork
         Orders = new OrderRepository(_context);
         OrderAppleVarieties = new OrderAppleVarietyRepository(_context);
         Owners = new OwnerRepository(_context);
+        Packagings = new PackagingRepository(_context);
     }
     
     public IAppleVarietyRepository AppleVarieties { get; private set; }
@@ -34,6 +35,8 @@ public class UnitOfWork : IUnitOfWork
     public IOrderAppleVarietyRepository OrderAppleVarieties { get; private set;}
 
     public IOwnerRepository Owners { get; private set;}
+
+    public IPackagingRepository Packagings { get; private set;}
 
     public int Complete()
     {

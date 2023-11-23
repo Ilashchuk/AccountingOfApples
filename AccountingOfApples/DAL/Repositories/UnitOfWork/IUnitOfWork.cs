@@ -18,5 +18,7 @@ public interface IUnitOfWork : IDisposable
 
     IOwnerRepository Owners { get; }
 
+    IPackagingRepository Packagings { get; }
+
     int Complete();
 }

@@ -49,6 +49,7 @@ public static class ServicesRegistration
         builder.Services.AddScoped<IForJuiceControlService, ForJuiceControlService>();
         builder.Services.AddScoped<IOrderControlService, OrderControlService>();
         builder.Services.AddScoped<IOrderAppleVarietyControlService, OrderAppleVarietyControlService>();
+        builder.Services.AddScoped<IPackagingControlService, PackagingControlService>();
 
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class AccountOfApplesMigration : Migration
+    public partial class MyMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,6 +48,18 @@ namespace DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Owners", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Packagings",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Packagings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -143,6 +155,7 @@ namespace DAL.Migrations
                     OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AppleVarietyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AreaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PackagingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Weight = table.Column<double>(type: "float", nullable: false),
                     CountOfBoxes = table.Column<int>(type: "int", nullable: false)
@@ -166,6 +179,12 @@ namespace DAL.Migrations
                         name: "FK_OrderAppleVarieties_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderAppleVarieties_Packagings_PackagingId",
+                        column: x => x.PackagingId,
+                        principalTable: "Packagings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -206,6 +225,11 @@ namespace DAL.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrderAppleVarieties_PackagingId",
+                table: "OrderAppleVarieties",
+                column: "PackagingId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Orders_ClientId",
                 table: "Orders",
                 column: "ClientId");
@@ -231,6 +255,9 @@ namespace DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Packagings");
 
             migrationBuilder.DropTable(
                 name: "Owners");
