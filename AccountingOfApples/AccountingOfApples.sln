@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingOfApples", "AccountingOfApples\AccountingOfApples.csproj", "{6D32B6A4-2E30-4DED-8E2C-E38D05FB6079}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountingOfApples", "AccountingOfApples\AccountingOfApples.csproj", "{6D32B6A4-2E30-4DED-8E2C-E38D05FB6079}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{6252DA90-1EE5-4401-8524-DA11F0ABC4DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{6252DA90-1EE5-4401-8524-DA11F0ABC4DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{EDA991EA-47F1-4FCF-BFE1-20B82553BA4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{EDA991EA-47F1-4FCF-BFE1-20B82553BA4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingsOfAppleTests", "AccountingsOfAppleTests\AccountingsOfAppleTests.csproj", "{91A076DC-598A-48BC-AF34-1178B6761803}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{EDA991EA-47F1-4FCF-BFE1-20B82553BA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDA991EA-47F1-4FCF-BFE1-20B82553BA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDA991EA-47F1-4FCF-BFE1-20B82553BA4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91A076DC-598A-48BC-AF34-1178B6761803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A076DC-598A-48BC-AF34-1178B6761803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A076DC-598A-48BC-AF34-1178B6761803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A076DC-598A-48BC-AF34-1178B6761803}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

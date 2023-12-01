@@ -2,6 +2,7 @@
 using BLL.DTO;
 using DAL.Models;
 using DAL.Repositories.UnitOfWork;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BLL.Services;
 
@@ -24,8 +25,17 @@ public class OrderControlService : IOrderControlService
             foreach (var item in order.OrderAppleVarieties)
             {
                 item.AvarageWeight = item.Weight / item.CountOfBoxes;
-                item.TotalPrice = item.Price * item.Weight - item.Packaging?.Price * item.Weight;
-                item.SumForOwner = item.TotalPrice / 100 * item.Area?.Owner?.Percent;
+                item.TotalPrice = item.Price * item.Weight;
+                if (item.Packaging != null)
+                {
+                    item.TotalPrice -= item.Packaging.Price * item.Weight;
+                }
+                    
+                item.SumForOwner = 0.0;
+                if (item.Area != null && item.Area.Owner != null)
+                {
+                    item.SumForOwner = item.TotalPrice / 100 * item.Area?.Owner?.Percent;
+                }
                 item.MyIncom = item.TotalPrice - item.SumForOwner;
             }
         }

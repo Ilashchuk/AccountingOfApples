@@ -18,8 +18,7 @@ public class AreaControlService : IAreaControlService
 
     public async Task<IEnumerable<AreaDTO>> GetAllAsync()
     {
-        var s = _mapper.Map<IEnumerable<AreaDTO>>(await _unitOfWork.Areas.GetAllAsync());
-        return s;
+         return _mapper.Map<IEnumerable<AreaDTO>>(await _unitOfWork.Areas.GetAllAsync());
     }
 
     public async Task<AreaDTO> GetByIdAsync(Guid id)
